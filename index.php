@@ -1,18 +1,3 @@
-<?php
-mt_srand(date('Ymd'));
-$number = mt_rand(50, 5000);
-
-$mysqli = new mysqli("localhost", "root", "", "DEJ-24");
-
-$stmt = $mysqli->prepare("SELECT * FROM plat ORDER BY RAND(?) LIMIT 1");
-$stmt->bind_param('i', $number);
-$stmt->execute();
-$result = $stmt->get_result();
-$row = $result->fetch_assoc();
-
-
-?>
-
 <!doctype html>
 <html lang="en">
 
@@ -26,24 +11,28 @@ $row = $result->fetch_assoc();
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="g-style.css">
+    <link rel="stylesheet" href="style.css">
     <title>Dej 24</title>
 </head>
 
 <body>
     <!--Responsive Hero Image with CSS Text + Button + popup Full-Width. If you like my work, please credit author: www.action360.ca @action360ca Enjoy!-->
-<!-- 
-<?php 
-if($_GET['v']){
-  echo 'dddddddddd';
-  ?>
-  <div class="alert alert-secondary" role="alert">
-  This is a secondary alert—check it out!
-</div>
-<?php
-}
 
-?> -->
+
+    <?php
+mt_srand(date('Ymd'));
+$number = mt_rand(50, 5000);
+
+$mysqli = new mysqli("localhost", "root", "", "DEJ-24");
+
+$stmt = $mysqli->prepare("SELECT * FROM plat ORDER BY RAND(?) LIMIT 1");
+$stmt->bind_param('i', $number);
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
+
+
+?>
 
     <div class="hero-image" style="height: 100%;">
         <div class="hero-text">
